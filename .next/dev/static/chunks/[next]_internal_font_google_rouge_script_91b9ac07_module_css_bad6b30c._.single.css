@@ -1,0 +1,26 @@
+/* [next]/internal/font/google/rouge_script_91b9ac07.module.css [app-client] (css) */
+@font-face {
+  font-family: Rouge Script;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/e7fe96c05ca2a075-s.p.312dc7c4.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Rouge Script Fallback;
+  src: local(Arial);
+  ascent-override: 125.83%;
+  descent-override: 50.21%;
+  line-gap-override: 0.0%;
+  size-adjust: 66.76%;
+}
+
+.rouge_script_91b9ac07-module__aZl8LG__className {
+  font-family: Rouge Script, Rouge Script Fallback;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=%5Bnext%5D_internal_font_google_rouge_script_91b9ac07_module_css_bad6b30c._.single.css.map*/
