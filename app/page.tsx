@@ -1,8 +1,17 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import PixelGame from '@/components/pixel-game'
+import TechTimeline from '@/components/tech-timeline'
+import SkillGrid from '@/components/skill-grid'
+import GoalTracker from '@/components/goal-tracker'
+import PathVisualizer from '@/components/path-visualizer'
+import Typewriter from '@/components/typewriter'
 
 export default function Home() {
+  const [scrollProgress, setScrollProgress] = useState(0)
+
   useEffect(() => {
     const sections = document.querySelectorAll<HTMLElement>('[data-story-section]')
     const observer = new IntersectionObserver(
@@ -25,120 +34,189 @@ export default function Home() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight
+      const documentHeight = document.documentElement.scrollHeight
+      const scrollTop = window.scrollY
+      const scrollableHeight = documentHeight - windowHeight
+      const progress = scrollableHeight > 0 ? (scrollTop / scrollableHeight) * 100 : 0
+      setScrollProgress(Math.min(100, Math.max(0, progress)))
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll() // Initial calculation
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div className="bg-background text-foreground">
+      {/* Navigation */}
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40">
+        <div className="flex items-center gap-6 px-6 py-2 border border-foreground/30 bg-background/90 backdrop-blur-sm">
+          <Link href="/" className="text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200">
+            HOME
+          </Link>
+          <div className="h-3 w-px bg-foreground/40"></div>
+          <Link href="/projects" className="text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200">
+            PROJECTS
+          </Link>
+          <div className="h-3 w-px bg-foreground/40"></div>
+          <Link href="/contact" className="text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200">
+            CONTACT
+          </Link>
+        </div>
+      </nav>
+
+      {/* Scroll Progress Indicator */}
+      <div className="fixed top-0 left-0 right-0 h-0.5 bg-foreground/15 z-50">
+        <div 
+          className="h-full bg-foreground/50 transition-all duration-150 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
       {/* Hero Section */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div className="text-center space-y-12">
-          <h1 className="text-6xl md:text-7xl font-rouge tracking-tighter animate-crack">
+          <h1 className="text-6xl md:text-7xl font-rouge tracking-wide animate-crack font-semibold">
             Xuji
           </h1>
-          <p className="text-xl tracking-widest font-light opacity-80">
+          <p className="text-xl tracking-widest font-light opacity-90">
             scroll down
           </p>
           
           {/* Animated scroll indicator */}
           <div className="flex flex-col items-center gap-3">
-            <div className="w-0.5 h-12 bg-foreground/30 animate-pulse"></div>
-            <div className="text-sm opacity-40 tracking-tight">—</div>
+            <div className="w-0.5 h-12 bg-foreground/60 animate-pulse"></div>
+            <div className="text-sm opacity-60 tracking-tight">—</div>
           </div>
         </div>
       </section>
 
       {/* Story Sections */}
-      <main className="max-w-2xl mx-auto px-6 py-20 space-y-24">
+      <main className="max-w-2xl mx-auto px-6 py-20 space-y-16">
         
         {/* Who I Am */}
         <section
           data-story-section
-          className="story-section"
+          className="story-section group"
         >
-          <h2 className="font-rouge text-5xl mb-8 tracking-tight">1 — Who I Am</h2>
-          <p className="text-lg leading-relaxed opacity-80 text-balance">
-            My name is Xuji, a student-developer who grew up obsessed with making things work, look clean, and feel alive. I'm part of a small but hungry team called XP Digital, where we build websites, brands, and digital experiences with the type of ambition that feels way bigger than our age. My world mixes code, design, and creativity — three things I never learned from textbooks, but from pure curiosity and hours of experimenting.
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-sm font-mono opacity-70 tracking-widest">01</span>
+            <div className="flex-1 h-px bg-foreground/30"></div>
+          </div>
+          <h2 className="font-rouge text-4xl mb-6 tracking-wide font-medium group-hover:opacity-100 transition-opacity duration-300">Who I Am</h2>
+          <p className="text-sm leading-relaxed opacity-90 text-balance group-hover:opacity-100 transition-opacity duration-300 mb-6">
+            Student-developer at XP Digital. I build things that work, look clean, and feel alive. Code, design, creativity — learned through curiosity, not textbooks.
           </p>
+          
+          {/* Game Component */}
+          <PixelGame />
         </section>
 
         {/* How I Started */}
         <section
           data-story-section
-          className="story-section"
+          className="story-section group"
         >
-          <h2 className="font-rouge text-5xl mb-8 tracking-tight">2 — How I Started</h2>
-          <p className="text-lg leading-relaxed opacity-80 text-balance">
-            I didn't begin with "big dreams of tech." I started with small builds. Random experiments. Frustrated debugging sessions at 2AM. Posting things online even when I didn't know if anyone would care. What pushed me forward was simple: the idea that one project can change someone's life — or even my own. Over time, that turned into real projects. Client sites. Landing pages. Dashboards. And eventually, fully functional products built with Next.js, TypeScript, MongoDB, Cloudinary, Bunny, BYL/QPay, and whatever else the project demanded. I wasn't born into this. I built myself into it.
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-sm font-mono opacity-40 tracking-widest">02</span>
+            <div className="flex-1 h-px bg-foreground/10"></div>
+          </div>
+          <h2 className="font-rouge text-4xl mb-6 tracking-wide font-medium group-hover:opacity-100 transition-opacity duration-300">How I Started</h2>
+          <p className="text-sm leading-relaxed opacity-90 text-balance group-hover:opacity-100 transition-opacity duration-300 mb-6">
+            Small builds. Random experiments. 2AM debugging sessions. One project at a time, I built myself into this.
           </p>
+          
+          {/* Tech Timeline */}
+          <TechTimeline />
         </section>
 
         {/* What I Do Now */}
         <section
           data-story-section
-          className="story-section"
+          className="story-section group"
         >
-          <h2 className="font-rouge text-5xl mb-8 tracking-tight">3 — What I Do Now</h2>
-          <div className="text-lg leading-relaxed opacity-80 text-balance space-y-4">
-            <p>
-              Right now, my lane is full-stack web development mixed with design, but with a twist — almost everything I create leans into AI-powered workflows, automation, speed, and modern aesthetics.
-            </p>
-            <div>
-              <p className="mb-3 opacity-90">I build:</p>
-              <ul className="space-y-2 ml-4">
-                <li>— Clean, responsive Next.js websites</li>
-                <li>— Minimalistic, modern landing pages</li>
-                <li>— Admin dashboards and payment integrations</li>
-                <li>— AI-assisted content systems</li>
-                <li>— Brand-consistent UI/UX with Tailwind + ShadCN</li>
-              </ul>
-            </div>
-            <p>
-              Outside XP Digital, I work on multiple personal projects: Sunrise Mongolia, Win Academy, Han Education, New Era, Sengee (Dow Mastery Academy), ByteHub, Hootwear, CozyCart, TellU, Danny-OS, and more — each one sharpening a new part of who I am.
-            </p>
-            <p>
-              I'm not just learning tech. I'm shaping a future where tech lets me build things faster, smoother, and smarter.
-            </p>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-sm font-mono opacity-40 tracking-widest">03</span>
+            <div className="flex-1 h-px bg-foreground/10"></div>
           </div>
+          <h2 className="font-rouge text-4xl mb-6 tracking-wide font-medium group-hover:opacity-100 transition-opacity duration-300">What I Do Now</h2>
+          <p className="text-sm leading-relaxed opacity-90 text-balance group-hover:opacity-100 transition-opacity duration-300 mb-6">
+            Full-stack development with design. AI-powered workflows, automation, modern aesthetics. Building faster, smoother, smarter.
+          </p>
+          
+          {/* Skill Grid */}
+          <SkillGrid />
         </section>
 
         {/* My Vision */}
         <section
           data-story-section
-          className="story-section"
+          className="story-section group"
         >
-          <h2 className="font-rouge text-5xl mb-8 tracking-tight">4 — My Vision</h2>
-          <p className="text-lg leading-relaxed opacity-80 text-balance">
-            My goal is simple: To master everything I touch — code, design, products, even storytelling — and to build projects that outlive me. I want to work on open-source systems, build tools people actually use, and create digital experiences that feel effortless. I want to grow XP Digital into a global-ready creative team. And I want to keep pushing until my skills match the vision in my head. This journey isn't about becoming "good enough." It's about becoming undeniable.
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-sm font-mono opacity-40 tracking-widest">04</span>
+            <div className="flex-1 h-px bg-foreground/10"></div>
+          </div>
+          <h2 className="font-rouge text-4xl mb-6 tracking-wide font-medium group-hover:opacity-100 transition-opacity duration-300">My Vision</h2>
+          <p className="text-sm leading-relaxed opacity-90 text-balance group-hover:opacity-100 transition-opacity duration-300 mb-6">
+            Master everything I touch. Build projects that outlive me. Open-source. Tools people use. XP Digital global-ready. Not "good enough" — undeniable.
           </p>
+          
+          {/* Goal Tracker */}
+          <GoalTracker />
         </section>
 
         {/* Where I'm Going */}
         <section
           data-story-section
-          className="story-section"
+          className="story-section group"
         >
-          <h2 className="font-rouge text-5xl mb-8 tracking-tight">5 — Where I'm Going</h2>
-          <p className="text-lg leading-relaxed opacity-80 text-balance">
-            In the near future, I'm stepping into university life at QUT (Mechanical Engineering) while building my dev career in parallel. I'm aiming for opportunities in software, AI, and open-source — places where I can contribute, learn, and evolve fast. I'm also leveling up my portfolio, my coding skills, my content creation, and my businesses — because my dream isn't just to get a job. It's to become a builder who can step into any field and leave a footprint. Every project I finish, every bug I fix, every design I refine — it's all part of the same story. A story I'm still writing.
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-sm font-mono opacity-40 tracking-widest">05</span>
+            <div className="flex-1 h-px bg-foreground/10"></div>
+          </div>
+          <h2 className="font-rouge text-4xl mb-6 tracking-wide font-medium group-hover:opacity-100 transition-opacity duration-300">Where I'm Going</h2>
+          <p className="text-sm leading-relaxed opacity-90 text-balance group-hover:opacity-100 transition-opacity duration-300 mb-6">
+            QUT Mechanical Engineering. Building dev career in parallel. Software, AI, open-source. Becoming a builder who leaves footprints. Still writing the story.
           </p>
+          
+          {/* Path Visualizer */}
+          <PathVisualizer />
         </section>
 
         {/* Closing */}
         <section
           data-story-section
-          className="story-section"
+          className="story-section group"
         >
-          <h2 className="font-rouge text-5xl mb-8 tracking-tight">6 — Closing Line</h2>
-          <p className="text-lg leading-relaxed opacity-80 text-balance">
-            This is me — Xuji. A learner, a builder, a creator. Still at the beginning, but pushing like I'm already halfway there.
-          </p>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-sm font-mono opacity-40 tracking-widest">06</span>
+            <div className="flex-1 h-px bg-foreground/10"></div>
+          </div>
+          <h2 className="font-rouge text-4xl mb-6 tracking-wide font-medium group-hover:opacity-100 transition-opacity duration-300">Closing Line</h2>
+          
+          {/* Typewriter Effect */}
+          <Typewriter />
         </section>
 
       </main>
 
       {/* Footer */}
-      <footer className="max-w-2xl mx-auto px-6 py-20 text-center border-t border-foreground/10">
-        <p className="text-sm opacity-60">
-          Portfolio of Xuji — built with code and vision.
-        </p>
+      <footer className="max-w-2xl mx-auto px-6 py-20 border-t border-foreground/30">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm opacity-80">
+          <p className="hover:opacity-100 transition-opacity duration-200">
+            Portfolio of Xuji — built with code and vision.
+          </p>
+          <div className="flex items-center gap-6 text-xs">
+            <span className="font-mono opacity-70">2024</span>
+            <div className="h-3 w-px bg-foreground/40"></div>
+            <span className="font-mono opacity-70">Next.js</span>
+          </div>
+        </div>
       </footer>
     </div>
   )
