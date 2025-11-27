@@ -14,7 +14,30 @@ export default function PathVisualizer() {
   const [score, setScore] = useState(0)
   const [highScore, setHighScore] = useState(0)
   const [gameOver, setGameOver] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const directionRef = useRef(INITIAL_DIRECTION)
+  const touchStartRef = useRef({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const changeDirection = (newDirection: { x: number; y: number }) => {
+    // Prevent reversing into itself
+    if (
+      (newDirection.x === -directionRef.current.x && newDirection.x !== 0) ||
+      (newDirection.y === -directionRef.current.y && newDirection.y !== 0)
+    ) {
+      return
+    }
+    directionRef.current = newDirection
+    setDirection(newDirection)
+  }
 
   useEffect(() => {
     if (!gameActive) return
@@ -37,8 +60,7 @@ export default function PathVisualizer() {
         newDirection.y = 0
       }
 
-      directionRef.current = newDirection
-      setDirection(newDirection)
+      changeDirection(newDirection)
     }
 
     window.addEventListener('keydown', handleKeyPress)
@@ -112,6 +134,51 @@ export default function PathVisualizer() {
     directionRef.current = INITIAL_DIRECTION
   }
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!gameActive || gameOver) return
+    const touch = e.touches[0]
+    if (touch) {
+      touchStartRef.current = { x: touch.clientX, y: touch.clientY }
+    }
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!gameActive || gameOver) return
+    
+    const touch = e.changedTouches[0]
+    if (!touch) return
+    
+    const deltaX = touch.clientX - touchStartRef.current.x
+    const deltaY = touch.clientY - touchStartRef.current.y
+    const minSwipeDistance = 50
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Horizontal swipe
+      if (Math.abs(deltaX) > minSwipeDistance) {
+        if (deltaX > 0 && directionRef.current.x === 0) {
+          changeDirection({ x: 1, y: 0 }) // Right
+        } else if (deltaX < 0 && directionRef.current.x === 0) {
+          changeDirection({ x: -1, y: 0 }) // Left
+        }
+      }
+    } else {
+      // Vertical swipe
+      if (Math.abs(deltaY) > minSwipeDistance) {
+        if (deltaY > 0 && directionRef.current.y === 0) {
+          changeDirection({ x: 0, y: 1 }) // Down
+        } else if (deltaY < 0 && directionRef.current.y === 0) {
+          changeDirection({ x: 0, y: -1 }) // Up
+        }
+      }
+    }
+  }
+
+  const handleButtonPress = (dir: { x: number; y: number }) => {
+    if (gameActive && !gameOver) {
+      changeDirection(dir)
+    }
+  }
+
   return (
     <div className="w-full my-6 border border-foreground/30 p-6 bg-background">
       <div className="flex items-center justify-between mb-4">
@@ -134,13 +201,17 @@ export default function PathVisualizer() {
           >
             [ START ]
           </button>
-          <p className="text-xs font-mono opacity-70 mt-4">Use arrow keys to move</p>
+          <p className="text-xs font-mono opacity-70 mt-4">
+            {isMobile ? 'Swipe or use buttons to move' : 'Use arrow keys to move'}
+          </p>
           <p className="text-xs font-mono opacity-60 mt-2">Eat food to grow and score!</p>
         </div>
       ) : (
         <div className="space-y-4">
           <div
-            className="relative w-full aspect-square border-2 border-foreground/30 bg-background"
+            className="relative w-full aspect-square border-2 border-foreground/30 bg-background touch-none"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
             style={{
               display: 'grid',
               gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)`,
@@ -178,6 +249,60 @@ export default function PathVisualizer() {
                 className="px-4 py-1 border border-foreground/30 hover:border-foreground/60 text-xs font-mono tracking-wider transition-all duration-200"
               >
                 [ PLAY AGAIN ]
+              </button>
+            </div>
+          )}
+
+          {/* Mobile Controls */}
+          {isMobile && gameActive && !gameOver && (
+            <div className="flex items-center justify-center gap-2 pt-4">
+              <button
+                onClick={() => handleButtonPress({ x: 0, y: -1 })}
+                onTouchStart={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  handleButtonPress({ x: 0, y: -1 })
+                }}
+                className="w-10 h-10 border-2 border-foreground/40 bg-background active:bg-foreground/15 active:border-foreground/80 active:scale-95 transition-all font-mono text-sm flex items-center justify-center touch-manipulation select-none"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+              >
+                ↑
+              </button>
+              <button
+                onClick={() => handleButtonPress({ x: -1, y: 0 })}
+                onTouchStart={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  handleButtonPress({ x: -1, y: 0 })
+                }}
+                className="w-10 h-10 border-2 border-foreground/40 bg-background active:bg-foreground/15 active:border-foreground/80 active:scale-95 transition-all font-mono text-sm flex items-center justify-center touch-manipulation select-none"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+              >
+                ←
+              </button>
+              <button
+                onClick={() => handleButtonPress({ x: 1, y: 0 })}
+                onTouchStart={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  handleButtonPress({ x: 1, y: 0 })
+                }}
+                className="w-10 h-10 border-2 border-foreground/40 bg-background active:bg-foreground/15 active:border-foreground/80 active:scale-95 transition-all font-mono text-sm flex items-center justify-center touch-manipulation select-none"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+              >
+                →
+              </button>
+              <button
+                onClick={() => handleButtonPress({ x: 0, y: 1 })}
+                onTouchStart={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  handleButtonPress({ x: 0, y: 1 })
+                }}
+                className="w-10 h-10 border-2 border-foreground/40 bg-background active:bg-foreground/15 active:border-foreground/80 active:scale-95 transition-all font-mono text-sm flex items-center justify-center touch-manipulation select-none"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+              >
+                ↓
               </button>
             </div>
           )}

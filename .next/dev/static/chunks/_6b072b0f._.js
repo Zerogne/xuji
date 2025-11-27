@@ -61,7 +61,7 @@ function Projects() {
         },
         {
             id: 3,
-            title: 'ByteHub',
+            title: 'HanEducation',
             description: 'Developer community platform for sharing code snippets and resources.',
             tech: [
                 'Next.js',
@@ -71,7 +71,7 @@ function Projects() {
         },
         {
             id: 4,
-            title: 'CozyCart',
+            title: 'NewEra',
             description: 'E-commerce platform with modern UI and seamless payment integration.',
             tech: [
                 'Next.js',
@@ -91,7 +91,7 @@ function Projects() {
         },
         {
             id: 6,
-            title: 'Danny-OS',
+            title: 'Sengee',
             description: 'Custom operating system interface built with modern web technologies.',
             tech: [
                 'Next.js',

@@ -1196,7 +1196,28 @@ function PathVisualizer() {
     const [score, setScore] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
     const [highScore, setHighScore] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
     const [gameOver, setGameOver] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isMobile, setIsMobile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const directionRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(INITIAL_DIRECTION);
+    const touchStartRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])({
+        x: 0,
+        y: 0
+    });
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const checkMobile = ()=>{
+            setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return ()=>window.removeEventListener('resize', checkMobile);
+    }, []);
+    const changeDirection = (newDirection)=>{
+        // Prevent reversing into itself
+        if (newDirection.x === -directionRef.current.x && newDirection.x !== 0 || newDirection.y === -directionRef.current.y && newDirection.y !== 0) {
+            return;
+        }
+        directionRef.current = newDirection;
+        setDirection(newDirection);
+    };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         if (!gameActive) return;
         const handleKeyPress = (e)=>{
@@ -1217,8 +1238,7 @@ function PathVisualizer() {
                 newDirection.x = 1;
                 newDirection.y = 0;
             }
-            directionRef.current = newDirection;
-            setDirection(newDirection);
+            changeDirection(newDirection);
         };
         window.addEventListener('keydown', handleKeyPress);
         return ()=>window.removeEventListener('keydown', handleKeyPress);
@@ -1295,6 +1315,60 @@ function PathVisualizer() {
         setGameOver(false);
         directionRef.current = INITIAL_DIRECTION;
     };
+    const handleTouchStart = (e)=>{
+        if (!gameActive || gameOver) return;
+        const touch = e.touches[0];
+        if (touch) {
+            touchStartRef.current = {
+                x: touch.clientX,
+                y: touch.clientY
+            };
+        }
+    };
+    const handleTouchEnd = (e)=>{
+        if (!gameActive || gameOver) return;
+        const touch = e.changedTouches[0];
+        if (!touch) return;
+        const deltaX = touch.clientX - touchStartRef.current.x;
+        const deltaY = touch.clientY - touchStartRef.current.y;
+        const minSwipeDistance = 50;
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            // Horizontal swipe
+            if (Math.abs(deltaX) > minSwipeDistance) {
+                if (deltaX > 0 && directionRef.current.x === 0) {
+                    changeDirection({
+                        x: 1,
+                        y: 0
+                    }); // Right
+                } else if (deltaX < 0 && directionRef.current.x === 0) {
+                    changeDirection({
+                        x: -1,
+                        y: 0
+                    }); // Left
+                }
+            }
+        } else {
+            // Vertical swipe
+            if (Math.abs(deltaY) > minSwipeDistance) {
+                if (deltaY > 0 && directionRef.current.y === 0) {
+                    changeDirection({
+                        x: 0,
+                        y: 1
+                    }); // Down
+                } else if (deltaY < 0 && directionRef.current.y === 0) {
+                    changeDirection({
+                        x: 0,
+                        y: -1
+                    }); // Up
+                }
+            }
+        }
+    };
+    const handleButtonPress = (dir)=>{
+        if (gameActive && !gameOver) {
+            changeDirection(dir);
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "w-full my-6 border border-foreground/30 p-6 bg-background",
         children: [
@@ -1306,7 +1380,7 @@ function PathVisualizer() {
                         children: "SNAKE GAME"
                     }, void 0, false, {
                         fileName: "[project]/components/path-visualizer.tsx",
-                        lineNumber: 118,
+                        lineNumber: 185,
                         columnNumber: 9
                     }, this),
                     gameActive ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1319,7 +1393,7 @@ function PathVisualizer() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/path-visualizer.tsx",
-                                lineNumber: 121,
+                                lineNumber: 188,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1329,13 +1403,13 @@ function PathVisualizer() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/path-visualizer.tsx",
-                                lineNumber: 122,
+                                lineNumber: 189,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/path-visualizer.tsx",
-                        lineNumber: 120,
+                        lineNumber: 187,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-xs font-mono opacity-80",
@@ -1345,13 +1419,13 @@ function PathVisualizer() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/path-visualizer.tsx",
-                        lineNumber: 125,
+                        lineNumber: 192,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/path-visualizer.tsx",
-                lineNumber: 117,
+                lineNumber: 184,
                 columnNumber: 7
             }, this),
             !gameActive ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1363,15 +1437,15 @@ function PathVisualizer() {
                         children: "[ START ]"
                     }, void 0, false, {
                         fileName: "[project]/components/path-visualizer.tsx",
-                        lineNumber: 131,
+                        lineNumber: 198,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-xs font-mono opacity-70 mt-4",
-                        children: "Use arrow keys to move"
+                        children: isMobile ? 'Swipe or use buttons to move' : 'Use arrow keys to move'
                     }, void 0, false, {
                         fileName: "[project]/components/path-visualizer.tsx",
-                        lineNumber: 137,
+                        lineNumber: 204,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1379,19 +1453,21 @@ function PathVisualizer() {
                         children: "Eat food to grow and score!"
                     }, void 0, false, {
                         fileName: "[project]/components/path-visualizer.tsx",
-                        lineNumber: 138,
+                        lineNumber: 207,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/path-visualizer.tsx",
-                lineNumber: 130,
+                lineNumber: 197,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "space-y-4",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "relative w-full aspect-square border-2 border-foreground/30 bg-background",
+                        className: "relative w-full aspect-square border-2 border-foreground/30 bg-background touch-none",
+                        onTouchStart: handleTouchStart,
+                        onTouchEnd: handleTouchEnd,
                         style: {
                             display: 'grid',
                             gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)`,
@@ -1406,7 +1482,7 @@ function PathVisualizer() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/components/path-visualizer.tsx",
-                                lineNumber: 151,
+                                lineNumber: 222,
                                 columnNumber: 13
                             }, this),
                             snake.map((segment, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1417,13 +1493,13 @@ function PathVisualizer() {
                                     }
                                 }, index, false, {
                                     fileName: "[project]/components/path-visualizer.tsx",
-                                    lineNumber: 161,
+                                    lineNumber: 232,
                                     columnNumber: 15
                                 }, this))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/path-visualizer.tsx",
-                        lineNumber: 142,
+                        lineNumber: 211,
                         columnNumber: 11
                     }, this),
                     gameOver && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1434,7 +1510,7 @@ function PathVisualizer() {
                                 children: "GAME OVER"
                             }, void 0, false, {
                                 fileName: "[project]/components/path-visualizer.tsx",
-                                lineNumber: 174,
+                                lineNumber: 245,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1445,7 +1521,7 @@ function PathVisualizer() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/path-visualizer.tsx",
-                                lineNumber: 175,
+                                lineNumber: 246,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1454,25 +1530,126 @@ function PathVisualizer() {
                                 children: "[ PLAY AGAIN ]"
                             }, void 0, false, {
                                 fileName: "[project]/components/path-visualizer.tsx",
-                                lineNumber: 176,
+                                lineNumber: 247,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/path-visualizer.tsx",
-                        lineNumber: 173,
+                        lineNumber: 244,
+                        columnNumber: 13
+                    }, this),
+                    isMobile && gameActive && !gameOver && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex items-center justify-center gap-2 pt-4",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: ()=>handleButtonPress({
+                                        x: 0,
+                                        y: -1
+                                    }),
+                                onTouchStart: (e)=>{
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    handleButtonPress({
+                                        x: 0,
+                                        y: -1
+                                    });
+                                },
+                                className: "w-10 h-10 border-2 border-foreground/40 bg-background active:bg-foreground/15 active:border-foreground/80 active:scale-95 transition-all font-mono text-sm flex items-center justify-center touch-manipulation select-none",
+                                style: {
+                                    WebkitTapHighlightColor: 'transparent'
+                                },
+                                children: "↑"
+                            }, void 0, false, {
+                                fileName: "[project]/components/path-visualizer.tsx",
+                                lineNumber: 259,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: ()=>handleButtonPress({
+                                        x: -1,
+                                        y: 0
+                                    }),
+                                onTouchStart: (e)=>{
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    handleButtonPress({
+                                        x: -1,
+                                        y: 0
+                                    });
+                                },
+                                className: "w-10 h-10 border-2 border-foreground/40 bg-background active:bg-foreground/15 active:border-foreground/80 active:scale-95 transition-all font-mono text-sm flex items-center justify-center touch-manipulation select-none",
+                                style: {
+                                    WebkitTapHighlightColor: 'transparent'
+                                },
+                                children: "←"
+                            }, void 0, false, {
+                                fileName: "[project]/components/path-visualizer.tsx",
+                                lineNumber: 271,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: ()=>handleButtonPress({
+                                        x: 1,
+                                        y: 0
+                                    }),
+                                onTouchStart: (e)=>{
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    handleButtonPress({
+                                        x: 1,
+                                        y: 0
+                                    });
+                                },
+                                className: "w-10 h-10 border-2 border-foreground/40 bg-background active:bg-foreground/15 active:border-foreground/80 active:scale-95 transition-all font-mono text-sm flex items-center justify-center touch-manipulation select-none",
+                                style: {
+                                    WebkitTapHighlightColor: 'transparent'
+                                },
+                                children: "→"
+                            }, void 0, false, {
+                                fileName: "[project]/components/path-visualizer.tsx",
+                                lineNumber: 283,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: ()=>handleButtonPress({
+                                        x: 0,
+                                        y: 1
+                                    }),
+                                onTouchStart: (e)=>{
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    handleButtonPress({
+                                        x: 0,
+                                        y: 1
+                                    });
+                                },
+                                className: "w-10 h-10 border-2 border-foreground/40 bg-background active:bg-foreground/15 active:border-foreground/80 active:scale-95 transition-all font-mono text-sm flex items-center justify-center touch-manipulation select-none",
+                                style: {
+                                    WebkitTapHighlightColor: 'transparent'
+                                },
+                                children: "↓"
+                            }, void 0, false, {
+                                fileName: "[project]/components/path-visualizer.tsx",
+                                lineNumber: 295,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/path-visualizer.tsx",
+                        lineNumber: 258,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/path-visualizer.tsx",
-                lineNumber: 141,
+                lineNumber: 210,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/path-visualizer.tsx",
-        lineNumber: 116,
+        lineNumber: 183,
         columnNumber: 5
     }, this);
 }
