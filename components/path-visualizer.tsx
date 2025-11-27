@@ -197,7 +197,7 @@ export default function PathVisualizer() {
         <div className="text-center py-8">
           <button
             onClick={startGame}
-            className="px-6 py-2 border border-foreground/30 hover:border-foreground/60 hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider"
+                className="px-6 py-2 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider"
           >
             [ START ]
           </button>
@@ -246,7 +246,7 @@ export default function PathVisualizer() {
               <div className="text-xs font-mono opacity-70 mb-4">Score: {score}</div>
               <button
                 onClick={resetGame}
-                className="px-4 py-1 border border-foreground/30 hover:border-foreground/60 text-xs font-mono tracking-wider transition-all duration-200"
+                className="px-4 py-1 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] text-xs font-mono tracking-wider transition-all duration-200"
               >
                 [ PLAY AGAIN ]
               </button>

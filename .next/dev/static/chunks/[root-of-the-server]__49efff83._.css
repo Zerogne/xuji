@@ -601,6 +601,31 @@
     animation: .8s ease-out forwards slideUp !important;
     transform: translateY(0) !important;
   }
+
+  .accent-border {
+    border-color: #d74745;
+    border-color: lab(51.7988% 56.7776 34.0415);
+  }
+
+  .accent-text {
+    color: #d74745;
+    color: lab(51.7988% 56.7776 34.0415);
+  }
+
+  .accent-bg {
+    background-color: #d74745;
+    background-color: lab(51.7988% 56.7776 34.0415);
+  }
+
+  .hover\:accent-text:hover {
+    color: #d74745 !important;
+    color: lab(51.7988% 56.7776 34.0415) !important;
+  }
+
+  .hover\:accent-border:hover {
+    border-color: #d74745 !important;
+    border-color: lab(51.7988% 56.7776 34.0415) !important;
+  }
 }
 
 @layer components;
@@ -2057,16 +2082,6 @@
     }
   }
 
-  .bg-foreground\/50 {
-    background-color: var(--foreground);
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-foreground\/50 {
-      background-color: color-mix(in oklab, var(--foreground) 50%, transparent);
-    }
-  }
-
   .bg-foreground\/60 {
     background-color: var(--foreground);
   }
@@ -2471,6 +2486,11 @@
 
   .whitespace-nowrap {
     white-space: nowrap;
+  }
+
+  .text-\[oklch\(0\.60_0\.18_25\)\] {
+    color: #d74745;
+    color: lab(51.7988% 56.7776 34.0415);
   }
 
   .text-accent-foreground {
@@ -3247,6 +3267,13 @@
   }
 
   @media (hover: hover) {
+    .hover\:border-\[oklch\(0\.60_0\.18_25\)\]:hover {
+      border-color: #d74745;
+      border-color: lab(51.7988% 56.7776 34.0415);
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:border-foreground\/30:hover {
       border-color: var(--foreground);
     }
@@ -3266,18 +3293,6 @@
     @supports (color: color-mix(in lab, red, red)) {
       .hover\:border-foreground\/50:hover {
         border-color: color-mix(in oklab, var(--foreground) 50%, transparent);
-      }
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:border-foreground\/60:hover {
-      border-color: var(--foreground);
-    }
-
-    @supports (color: color-mix(in lab, red, red)) {
-      .hover\:border-foreground\/60:hover {
-        border-color: color-mix(in oklab, var(--foreground) 60%, transparent);
       }
     }
   }
@@ -3367,6 +3382,13 @@
   }
 
   @media (hover: hover) {
+    .hover\:text-\[oklch\(0\.60_0\.18_25\)\]:hover {
+      color: #d74745;
+      color: lab(51.7988% 56.7776 34.0415);
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:text-accent-foreground:hover {
       color: var(--accent-foreground);
     }
@@ -3393,6 +3415,12 @@
   @media (hover: hover) {
     .hover\:underline:hover {
       text-decoration-line: underline;
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:accent-border:hover {
+      accent-color: var(--border);
     }
   }
 
@@ -5760,7 +5788,7 @@
   --secondary-foreground: #f8f8f8;
   --muted: #0b0b0b;
   --muted-foreground: #cecece;
-  --accent: #f8f8f8;
+  --accent: #627482;
   --accent-foreground: #000;
   --destructive: #e40014;
   --destructive-foreground: #f8f8f8;
@@ -5804,6 +5832,7 @@
     --border: lab(13% 0 0);
     --input: lab(7.22637% -.0000149012 0);
     --ring: lab(53.6% 0 0);
+    --accent: lab(47.8296% -4.55037 -9.72468);
     --chart-1: lab(57.1026% 64.2584 89.8886);
     --chart-2: lab(55.0223% -41.0774 -3.90277);
     --chart-3: lab(30.372% -13.1853 -18.7887);

@@ -41,15 +41,15 @@ export default function Contact() {
       {/* Navigation */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40">
         <div className="flex items-center gap-6 px-6 py-2 border border-foreground/30 bg-background/90 backdrop-blur-sm">
-          <Link href="/" className="text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200">
+          <Link href="/" className="text-xs font-mono opacity-80 hover:opacity-100 transition-all duration-200 hover:text-[oklch(0.60_0.18_25)]">
             HOME
           </Link>
           <div className="h-3 w-px bg-foreground/40"></div>
-          <Link href="/projects" className="text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200">
+          <Link href="/projects" className="text-xs font-mono opacity-80 hover:opacity-100 transition-all duration-200 hover:text-[oklch(0.60_0.18_25)]">
             PROJECTS
           </Link>
           <div className="h-3 w-px bg-foreground/40"></div>
-          <Link href="/contact" className="text-xs font-mono opacity-100">
+          <Link href="/contact" className="text-xs font-mono opacity-100 text-[oklch(0.60_0.18_25)]">
             CONTACT
           </Link>
         </div>
@@ -58,7 +58,7 @@ export default function Contact() {
       {/* Scroll Progress Indicator */}
       <div className="fixed top-0 left-0 right-0 h-0.5 bg-foreground/15 z-50">
         <div 
-          className="h-full bg-foreground/50 transition-all duration-150 ease-out"
+          className="h-full accent-bg transition-all duration-150 ease-out"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -111,9 +111,9 @@ export default function Contact() {
                   Let's Build Together
                 </div>
                 <div className="flex items-center justify-center gap-2 mt-6">
-                  <div className="w-2 h-2 bg-foreground/60 rounded-full animate-pulse"></div>
-                  <div className="w-2 h-2 bg-foreground/60 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                  <div className="w-2 h-2 bg-foreground/60 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                <div className="w-2 h-2 accent-bg rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 accent-bg rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 accent-bg rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
                 </div>
                 <div className="text-xs font-mono opacity-60 mt-4 group-hover:opacity-80 transition-opacity">
                   Hover to interact
@@ -127,7 +127,7 @@ export default function Contact() {
               href="mailto:k2naysaa@gmail.com"
               onMouseEnter={() => setHoveredCard('email')}
               onMouseLeave={() => setHoveredCard(null)}
-              className="group relative border-2 border-foreground/30 hover:border-foreground/60 p-8 transition-all duration-300 hover:scale-105"
+              className="group relative border-2 border-foreground/30 hover:border-[oklch(0.60_0.18_25)] p-8 transition-all duration-300 hover:scale-105"
             >
               <div className="absolute inset-0 border-2 border-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
                    style={{ transform: hoveredCard === 'email' ? 'translate(4px, 4px)' : 'translate(0, 0)' }}></div>
@@ -144,7 +144,7 @@ export default function Contact() {
               rel="noopener noreferrer"
               onMouseEnter={() => setHoveredCard('github')}
               onMouseLeave={() => setHoveredCard(null)}
-              className="group relative border-2 border-foreground/30 hover:border-foreground/60 p-8 transition-all duration-300 hover:scale-105"
+              className="group relative border-2 border-foreground/30 hover:border-[oklch(0.60_0.18_25)] p-8 transition-all duration-300 hover:scale-105"
             >
               <div className="absolute inset-0 border-2 border-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
                    style={{ transform: hoveredCard === 'github' ? 'translate(4px, 4px)' : 'translate(0, 0)' }}></div>
@@ -161,7 +161,7 @@ export default function Contact() {
               rel="noopener noreferrer"
               onMouseEnter={() => setHoveredCard('instagram')}
               onMouseLeave={() => setHoveredCard(null)}
-              className="group relative border-2 border-foreground/30 hover:border-foreground/60 p-8 transition-all duration-300 hover:scale-105"
+              className="group relative border-2 border-foreground/30 hover:border-[oklch(0.60_0.18_25)] p-8 transition-all duration-300 hover:scale-105"
             >
               <div className="absolute inset-0 border-2 border-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
                    style={{ transform: hoveredCard === 'instagram' ? 'translate(4px, 4px)' : 'translate(0, 0)' }}></div>

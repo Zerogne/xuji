@@ -106,7 +106,7 @@ export default function Typewriter() {
         <div className="text-center py-8">
           <button
             onClick={startGame}
-            className="px-6 py-2 border border-foreground/30 hover:border-foreground/60 hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider"
+                className="px-6 py-2 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider"
           >
             [ START ]
           </button>

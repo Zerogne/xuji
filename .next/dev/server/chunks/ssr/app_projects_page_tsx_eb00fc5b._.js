@@ -102,7 +102,7 @@ function Projects() {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: "/",
-                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200",
+                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-all duration-200 hover:accent-text",
                             children: "HOME"
                         }, void 0, false, {
                             fileName: "[project]/app/projects/page.tsx",
@@ -118,7 +118,7 @@ function Projects() {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: "/projects",
-                            className: "text-xs font-mono opacity-100",
+                            className: "text-xs font-mono opacity-100 accent-text",
                             children: "PROJECTS"
                         }, void 0, false, {
                             fileName: "[project]/app/projects/page.tsx",
@@ -134,7 +134,7 @@ function Projects() {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: "/contact",
-                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200",
+                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-all duration-200 hover:accent-text",
                             children: "CONTACT"
                         }, void 0, false, {
                             fileName: "[project]/app/projects/page.tsx",
@@ -155,7 +155,7 @@ function Projects() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "fixed top-0 left-0 right-0 h-0.5 bg-foreground/15 z-50",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "h-full bg-foreground/50 transition-all duration-150 ease-out",
+                    className: "h-full accent-bg transition-all duration-150 ease-out",
                     style: {
                         width: `${scrollProgress}%`
                     }

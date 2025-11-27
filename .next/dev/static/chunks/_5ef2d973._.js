@@ -74,7 +74,7 @@ function Contact() {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                             href: "/",
-                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200",
+                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-all duration-200 hover:text-[oklch(0.60_0.18_25)]",
                             children: "HOME"
                         }, void 0, false, {
                             fileName: "[project]/app/contact/page.tsx",
@@ -90,7 +90,7 @@ function Contact() {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                             href: "/projects",
-                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200",
+                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-all duration-200 hover:text-[oklch(0.60_0.18_25)]",
                             children: "PROJECTS"
                         }, void 0, false, {
                             fileName: "[project]/app/contact/page.tsx",
@@ -106,7 +106,7 @@ function Contact() {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                             href: "/contact",
-                            className: "text-xs font-mono opacity-100",
+                            className: "text-xs font-mono opacity-100 text-[oklch(0.60_0.18_25)]",
                             children: "CONTACT"
                         }, void 0, false, {
                             fileName: "[project]/app/contact/page.tsx",
@@ -127,7 +127,7 @@ function Contact() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "fixed top-0 left-0 right-0 h-0.5 bg-foreground/15 z-50",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "h-full bg-foreground/50 transition-all duration-150 ease-out",
+                    className: "h-full accent-bg transition-all duration-150 ease-out",
                     style: {
                         width: `${scrollProgress}%`
                     }
@@ -258,31 +258,31 @@ function Contact() {
                                                 className: "flex items-center justify-center gap-2 mt-6",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "w-2 h-2 bg-foreground/60 rounded-full animate-pulse"
+                                                        className: "w-2 h-2 accent-bg rounded-full animate-pulse"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/contact/page.tsx",
                                                         lineNumber: 114,
-                                                        columnNumber: 19
+                                                        columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "w-2 h-2 bg-foreground/60 rounded-full animate-pulse",
+                                                        className: "w-2 h-2 accent-bg rounded-full animate-pulse",
                                                         style: {
                                                             animationDelay: '0.2s'
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/contact/page.tsx",
                                                         lineNumber: 115,
-                                                        columnNumber: 19
+                                                        columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "w-2 h-2 bg-foreground/60 rounded-full animate-pulse",
+                                                        className: "w-2 h-2 accent-bg rounded-full animate-pulse",
                                                         style: {
                                                             animationDelay: '0.4s'
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/contact/page.tsx",
                                                         lineNumber: 116,
-                                                        columnNumber: 19
+                                                        columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
@@ -322,7 +322,7 @@ function Contact() {
                                     href: "mailto:k2naysaa@gmail.com",
                                     onMouseEnter: ()=>setHoveredCard('email'),
                                     onMouseLeave: ()=>setHoveredCard(null),
-                                    className: "group relative border-2 border-foreground/30 hover:border-foreground/60 p-8 transition-all duration-300 hover:scale-105",
+                                    className: "group relative border-2 border-foreground/30 hover:border-[oklch(0.60_0.18_25)] p-8 transition-all duration-300 hover:scale-105",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute inset-0 border-2 border-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300",
@@ -379,7 +379,7 @@ function Contact() {
                                     rel: "noopener noreferrer",
                                     onMouseEnter: ()=>setHoveredCard('github'),
                                     onMouseLeave: ()=>setHoveredCard(null),
-                                    className: "group relative border-2 border-foreground/30 hover:border-foreground/60 p-8 transition-all duration-300 hover:scale-105",
+                                    className: "group relative border-2 border-foreground/30 hover:border-[oklch(0.60_0.18_25)] p-8 transition-all duration-300 hover:scale-105",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute inset-0 border-2 border-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300",
@@ -436,7 +436,7 @@ function Contact() {
                                     rel: "noopener noreferrer",
                                     onMouseEnter: ()=>setHoveredCard('instagram'),
                                     onMouseLeave: ()=>setHoveredCard(null),
-                                    className: "group relative border-2 border-foreground/30 hover:border-foreground/60 p-8 transition-all duration-300 hover:scale-105",
+                                    className: "group relative border-2 border-foreground/30 hover:border-[oklch(0.60_0.18_25)] p-8 transition-all duration-300 hover:scale-105",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute inset-0 border-2 border-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300",

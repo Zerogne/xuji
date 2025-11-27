@@ -24,6 +24,7 @@
   --border: oklch(0.25 0 0);
   --input: oklch(0.20 0 0);
   --ring: oklch(0.60 0 0);
+  --accent: oklch(0.55 0.03 240);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -98,6 +99,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-accent: var(--accent);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -216,5 +218,27 @@
     animation: slideUp 0.8s ease-out forwards !important;
     opacity: 1 !important;
     transform: translateY(0) !important;
+  }
+  
+  /* Accent color utility classes */
+  .accent-border {
+    border-color: oklch(0.60 0.18 25);
+  }
+  
+  .accent-text {
+    color: oklch(0.60 0.18 25);
+  }
+  
+  .accent-bg {
+    background-color: oklch(0.60 0.18 25);
+  }
+  
+  /* Hover states for accent color */
+  .hover\:accent-text:hover {
+    color: oklch(0.60 0.18 25) !important;
+  }
+  
+  .hover\:accent-border:hover {
+    border-color: oklch(0.60 0.18 25) !important;
   }
 }

@@ -66,15 +66,15 @@ export default function Projects() {
       {/* Navigation */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40">
         <div className="flex items-center gap-6 px-6 py-2 border border-foreground/30 bg-background/90 backdrop-blur-sm">
-          <Link href="/" className="text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200">
+          <Link href="/" className="text-xs font-mono opacity-80 hover:opacity-100 transition-all duration-200 hover:text-[oklch(0.60_0.18_25)]">
             HOME
           </Link>
           <div className="h-3 w-px bg-foreground/40"></div>
-          <Link href="/projects" className="text-xs font-mono opacity-100">
+          <Link href="/projects" className="text-xs font-mono opacity-100 text-[oklch(0.60_0.18_25)]">
             PROJECTS
           </Link>
           <div className="h-3 w-px bg-foreground/40"></div>
-          <Link href="/contact" className="text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200">
+          <Link href="/contact" className="text-xs font-mono opacity-80 hover:opacity-100 transition-all duration-200 hover:text-[oklch(0.60_0.18_25)]">
             CONTACT
           </Link>
         </div>
@@ -83,7 +83,7 @@ export default function Projects() {
       {/* Scroll Progress Indicator */}
       <div className="fixed top-0 left-0 right-0 h-0.5 bg-foreground/15 z-50">
         <div 
-          className="h-full bg-foreground/50 transition-all duration-150 ease-out"
+          className="h-full accent-bg transition-all duration-150 ease-out"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>

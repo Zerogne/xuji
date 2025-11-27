@@ -246,7 +246,7 @@ function PixelGame() {
                             className: "absolute inset-0 flex items-center justify-center",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: startGame,
-                                className: "px-6 py-2 border border-foreground/30 hover:border-foreground/60 hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
+                                className: "px-6 py-2 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
                                 children: "[ START GAME ]"
                             }, void 0, false, {
                                 fileName: "[project]/components/pixel-game.tsx",
@@ -292,7 +292,7 @@ function PixelGame() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     onClick: startGame,
-                                    className: "mt-4 px-4 py-1 border border-foreground/30 hover:border-foreground/60 text-xs font-mono tracking-wider transition-all duration-200",
+                                    className: "mt-4 px-4 py-1 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] text-xs font-mono tracking-wider transition-all duration-200",
                                     children: "[ PLAY AGAIN ]"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pixel-game.tsx",
@@ -511,7 +511,7 @@ function TechTimeline() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: startGame,
-                        className: "px-6 py-2 border border-foreground/30 hover:border-foreground/60 hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
+                        className: "px-6 py-2 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
                         children: "[ START ]"
                     }, void 0, false, {
                         fileName: "[project]/components/tech-timeline.tsx",
@@ -639,7 +639,7 @@ function TechTimeline() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: startGame,
-                        className: "px-4 py-1 border border-foreground/30 hover:border-foreground/60 text-xs font-mono tracking-wider transition-all duration-200",
+                        className: "px-4 py-1 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] text-xs font-mono tracking-wider transition-all duration-200",
                         children: "[ PLAY AGAIN ]"
                     }, void 0, false, {
                         fileName: "[project]/components/tech-timeline.tsx",
@@ -805,7 +805,7 @@ function SkillGrid() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: startGame,
-                        className: "px-6 py-2 border border-foreground/30 hover:border-foreground/60 hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
+                        className: "px-6 py-2 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
                         children: "[ START ]"
                     }, void 0, false, {
                         fileName: "[project]/components/skill-grid.tsx",
@@ -1049,7 +1049,7 @@ function GoalTracker() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: startGame,
-                        className: "px-6 py-2 border border-foreground/30 hover:border-foreground/60 hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
+                        className: "px-6 py-2 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
                         children: "[ START ]"
                     }, void 0, false, {
                         fileName: "[project]/components/goal-tracker.tsx",
@@ -1141,7 +1141,7 @@ function GoalTracker() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: startGame,
-                        className: "px-4 py-1 border border-foreground/30 hover:border-foreground/60 text-xs font-mono tracking-wider transition-all duration-200",
+                        className: "px-4 py-1 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] text-xs font-mono tracking-wider transition-all duration-200",
                         children: "[ PLAY AGAIN ]"
                     }, void 0, false, {
                         fileName: "[project]/components/goal-tracker.tsx",
@@ -1433,7 +1433,7 @@ function PathVisualizer() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: startGame,
-                        className: "px-6 py-2 border border-foreground/30 hover:border-foreground/60 hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
+                        className: "px-6 py-2 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
                         children: "[ START ]"
                     }, void 0, false, {
                         fileName: "[project]/components/path-visualizer.tsx",
@@ -1526,7 +1526,7 @@ function PathVisualizer() {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: resetGame,
-                                className: "px-4 py-1 border border-foreground/30 hover:border-foreground/60 text-xs font-mono tracking-wider transition-all duration-200",
+                                className: "px-4 py-1 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] text-xs font-mono tracking-wider transition-all duration-200",
                                 children: "[ PLAY AGAIN ]"
                             }, void 0, false, {
                                 fileName: "[project]/components/path-visualizer.tsx",
@@ -1801,7 +1801,7 @@ function Typewriter() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: startGame,
-                        className: "px-6 py-2 border border-foreground/30 hover:border-foreground/60 hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
+                        className: "px-6 py-2 border border-foreground/30 hover:border-[oklch(0.60_0.18_25)] hover:bg-foreground/5 transition-all duration-200 font-mono text-sm tracking-wider",
                         children: "[ START ]"
                     }, void 0, false, {
                         fileName: "[project]/components/typewriter.tsx",
@@ -1950,7 +1950,7 @@ function Home() {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: "/",
-                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200",
+                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-all duration-200 hover:text-[oklch(0.60_0.18_25)]",
                             children: "HOME"
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
@@ -1966,7 +1966,7 @@ function Home() {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: "/projects",
-                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200",
+                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-all duration-200 hover:text-[oklch(0.60_0.18_25)]",
                             children: "PROJECTS"
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
@@ -1982,7 +1982,7 @@ function Home() {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: "/contact",
-                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-opacity duration-200",
+                            className: "text-xs font-mono opacity-80 hover:opacity-100 transition-all duration-200 hover:text-[oklch(0.60_0.18_25)]",
                             children: "CONTACT"
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
@@ -2003,7 +2003,7 @@ function Home() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "fixed top-0 left-0 right-0 h-0.5 bg-foreground/15 z-50",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "h-full bg-foreground/50 transition-all duration-150 ease-out",
+                    className: "h-full accent-bg transition-all duration-150 ease-out",
                     style: {
                         width: `${scrollProgress}%`
                     }
